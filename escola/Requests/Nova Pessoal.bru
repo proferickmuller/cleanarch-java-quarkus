@@ -1,0 +1,18 @@
+meta {
+  name: Nova Pessoal
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{host}}/pessoa
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "nome": "Erick Muller", 
+    "enderecoEmail": "erick@em.pro.br"
+  }
+}

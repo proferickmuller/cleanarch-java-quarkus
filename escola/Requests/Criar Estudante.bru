@@ -1,0 +1,18 @@
+meta {
+  name: Criar Estudante
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{host}}/estudante
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "pessoaId": "a",
+    "curso": "biologia"
+  }
+}
