@@ -1,4 +1,4 @@
 [tools]
-java = "temurin-21"
+java = "temurin-17"
 maven = "latest"
 quarkus = "latest"
