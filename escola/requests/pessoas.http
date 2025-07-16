@@ -1,0 +1,9 @@
+GET http://localhost:8080/pessoa
+
+###
+
+GET http://localhost:8080/estudante
+
+###
+
+GET http://localhost:8080/curso

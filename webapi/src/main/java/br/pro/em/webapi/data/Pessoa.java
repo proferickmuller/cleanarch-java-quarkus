@@ -13,8 +13,11 @@ public class Pessoa extends PanacheEntityBase {
     @Column(name = "nome", nullable = false, length = 100)
     private String nome;
 
-    @Column(name = "endemail", nullable = false, length = 100)
+    @Column(name = "endereco_email", nullable = false, length = 100)
     private String endEmail;
+
+    @Column(name  = "data_nascimento", nullable = false,  length = 10)
+    private String dataNascimento;
 
     public String getId() {
         return id;
@@ -38,5 +41,13 @@ public class Pessoa extends PanacheEntityBase {
 
     public void setEndEmail(String endEmail) {
         this.endEmail = endEmail;
+    }
+
+    public String getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(String dataNascimento) {
+        this.dataNascimento = dataNascimento;
     }
 }

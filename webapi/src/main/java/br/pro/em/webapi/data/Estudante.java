@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 @Table(name="estudantes")
 public class Estudante extends PanacheEntity {
 
-    @Column(name="pessoaId", nullable = false, unique = true)
+    @Column(name="pessoa_id", nullable = false, unique = true)
     private String pessoaId;
 
     @Column(name="curso", nullable = false, length = 100)

@@ -71,6 +71,11 @@
         </dependency>
 
         <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-flyway</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>br.pro.em.escola</groupId>
             <artifactId>escolacore</artifactId>
             <version>1.0-SNAPSHOT</version>
