@@ -1,6 +1,7 @@
-package br.pro.em.webapi.controller;
+package br.pro.em.escola.dtos;
 
-public record NovaPessoaDTO(
+public record PessoaDTO(
+        String id,
         String nome,
         String enderecoEmail,
         String dataNascimento

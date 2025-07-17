@@ -12,8 +12,6 @@ import jakarta.ws.rs.core.MediaType;
 
 import java.util.List;
 
-import br.pro.em.escola.resource.TesteResource;
-
 @Path("/estudante")
 public class EstudanteResource {
 
@@ -23,17 +21,14 @@ public class EstudanteResource {
     @GET
     @Path("/curso/{curso}")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<br.pro.em.webapi.data.Estudante> getEstudantePorCurso(String curso) {
-        var t = new TesteResource("Teste de recurso");
-        t.teste();
-
+    public List<Estudante> getEstudantePorCurso(String curso) {
         return estudanteRepository.find("curso", curso).firstResult();
     }
 
     @GET
     @Path("/pessoa/{pessoaId}")
     @Produces(MediaType.APPLICATION_JSON)
-    public br.pro.em.webapi.data.Estudante getEstudantePorPessoaId(String pessoaId) {
+    public Estudante getEstudantePorPessoaId(String pessoaId) {
         return estudanteRepository.find("pessoaId", pessoaId).firstResult();
     }
 

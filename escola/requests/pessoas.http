@@ -1,9 +1,17 @@
-GET http://localhost:8080/pessoa
+GET {{hostname}}/pessoa
 
 ###
 
-GET http://localhost:8080/estudante
+POST {{hostname}}/pessoa
+Content-Type: application/json
+
+{
+  "nome": "Joao das Neves",
+  "enderecoEmail": "joao@neves.com",
+  "dataNascimento": "1981-01-01"
+}
 
 ###
 
-GET http://localhost:8080/curso
+GET {{hostname}}/pessoa/asd
+Accept: application/json

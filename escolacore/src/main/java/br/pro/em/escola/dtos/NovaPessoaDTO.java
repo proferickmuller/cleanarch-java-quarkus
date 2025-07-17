@@ -1,4 +1,4 @@
-package br.pro.em.webapi.controller;
+package br.pro.em.escola.dtos;
 
 public record NovaPessoaDTO(
         String nome,

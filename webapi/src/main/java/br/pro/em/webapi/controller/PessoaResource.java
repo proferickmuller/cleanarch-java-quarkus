@@ -38,7 +38,7 @@ public class PessoaResource {
     public Response criarPessoa(NovaPessoaDTO novaPessoaDTO) {
         String novoId;
         do {
-            novoId = gerarStringAleatoria(12);
+            novoId = gerarStringAleatoria(20);
         } while (pessoaRepository.porId(novoId) != null);
 
         Pessoa p = pessoaRepository.porEnderecoEmail(novaPessoaDTO.enderecoEmail());
@@ -50,6 +50,7 @@ public class PessoaResource {
         novaPessoa.setId(novoId);
         novaPessoa.setNome(novaPessoaDTO.nome());
         novaPessoa.setEndEmail(novaPessoaDTO.enderecoEmail());
+        novaPessoa.setDataNascimento(novaPessoaDTO.dataNascimento());
 
         pessoaRepository.persist(novaPessoa);
         return Response.ok().entity(novaPessoa).build();
