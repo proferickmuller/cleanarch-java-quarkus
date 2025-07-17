@@ -1,9 +1,9 @@
 package br.pro.em.escola.gateways;
 
-import br.pro.em.escola.entities.PessoaEntity;
+import br.pro.em.escola.entities.Pessoa;
 
 public interface IPessoaGateway {
-    PessoaEntity save(PessoaEntity p);
+    void save(Pessoa p);
 
-    PessoaEntity obterPorId(String id);
+    Pessoa obterPorId(String id);
 }

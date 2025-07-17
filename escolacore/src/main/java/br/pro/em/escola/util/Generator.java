@@ -11,4 +11,16 @@ public class Generator {
         }
         return sb.toString();
     }
+
+    public static String gerarNumericoAleatorio(int tamanho) {
+        if (tamanho >= 10) {
+            throw new IllegalArgumentException("O tamanho deve ser menor que 10");
+        }
+
+        String caracteres = "0123456789";
+        java.util.Random random = new java.util.Random();
+        double numero = random.nextLong(1, (long)Math.pow(10, tamanho));
+
+        return String.format("%09d", (long) numero);
+    }
 }

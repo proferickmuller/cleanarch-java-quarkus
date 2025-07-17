@@ -1,36 +1,28 @@
 package br.pro.em.escola.usecases;
 
-import br.pro.em.escola.dtos.NovaPessoaDTO;
-import br.pro.em.escola.entities.PessoaEntity;
+import br.pro.em.escola.entities.Pessoa;
 import br.pro.em.escola.gateways.IPessoaGateway;
 import br.pro.em.escola.util.Generator;
 
-import javax.swing.*;
+import java.time.LocalDate;
 
 public class NovaPessoaUseCase {
 
-    IPessoaGateway pessoaGateway;
+    private final IPessoaGateway pessoaGateway;
 
     public NovaPessoaUseCase(IPessoaGateway pessoaGateway) {
         this.pessoaGateway = pessoaGateway;
     }
 
-    public PessoaEntity run(NovaPessoaDTO novaPessoaDTO) {
-        // ver se o novo id existe.
-        String novoId = "";
+    public Pessoa run(String nome, String enderecoEmail, LocalDate dataNascimento) {
+        String novoId;
         do {
             novoId = Generator.gerarStringAleatoria(20);
-        } while (pessoaGateway.obterPorId(novoId) == null);
+        } while (this.pessoaGateway.obterPorId(novoId) != null);
 
-        PessoaEntity p = new PessoaEntity(
-                novoId,
-                novaPessoaDTO.nome(),
-                novaPessoaDTO.enderecoEmail(),
-                novaPessoaDTO.dataNascimento()
-        );
-
-        var pn = this.pessoaGateway.save(p);
-        return pn;
+        Pessoa pessoa = new Pessoa(novoId, nome, enderecoEmail, dataNascimento);
+        this.pessoaGateway.save(pessoa);
+        return pessoa;
     }
 
 }

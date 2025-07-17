@@ -19,7 +19,7 @@ public class PessoaRepository implements PanacheRepositoryBase<Pessoa, String>, 
 
 
     @Override
-    public Pessoa PessoaPorId(String id) {
+    public Pessoa pessoaPorId(String id) {
         return find("id", id).firstResult();
     }
 }
