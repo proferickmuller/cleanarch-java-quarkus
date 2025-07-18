@@ -1,7 +1,7 @@
 package br.pro.em.escola.mappers;
 
 import br.pro.em.escola.dtos.PessoaDTO;
-import br.pro.em.escola.entities.Pessoa;
+import br.pro.em.escola.entities.PessoaEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -9,5 +9,5 @@ import org.mapstruct.factory.Mappers;
 public interface PessoaMapper {
     PessoaMapper INSTANCE = Mappers.getMapper(PessoaMapper.class);
 
-    PessoaDTO pessoaParaPessoaDTO(Pessoa pessoa);
+    PessoaDTO pessoaParaPessoaDTO(PessoaEntity pessoa);
 }

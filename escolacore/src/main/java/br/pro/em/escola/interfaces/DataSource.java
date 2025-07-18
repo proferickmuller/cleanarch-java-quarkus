@@ -4,14 +4,14 @@ import br.pro.em.escola.dtos.CursoDTO;
 import br.pro.em.escola.dtos.MatriculaCompletoDTO;
 import br.pro.em.escola.dtos.MatriculaDTO;
 import br.pro.em.escola.dtos.PessoaDTO;
-import br.pro.em.escola.entities.Pessoa;
+import br.pro.em.escola.entities.PessoaEntity;
 
 import java.util.List;
 
 public interface DataSource {
     PessoaDTO pessoaPorId(String id);
 
-    void savePessoa(Pessoa p);
+    void savePessoa(PessoaDTO p);
 
     List<CursoDTO> cursosAtivos();
 

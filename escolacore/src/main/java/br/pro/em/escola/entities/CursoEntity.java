@@ -6,7 +6,7 @@ import jakarta.validation.constraints.NotNull;
 
 import java.util.Set;
 
-public class Curso {
+public class CursoEntity {
 
     @NotNull
     @NotBlank
@@ -18,7 +18,7 @@ public class Curso {
 
     private boolean ativo;
 
-    public Curso(
+    public CursoEntity(
             String id,
             String nome,
             boolean ativo
@@ -29,7 +29,7 @@ public class Curso {
 
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         Validator validator = factory.getValidator();
-        Set<ConstraintViolation<Curso>> violations = validator.validate(this);
+        Set<ConstraintViolation<CursoEntity>> violations = validator.validate(this);
 
         if  (!violations.isEmpty()) {
             throw new ConstraintViolationException(violations);

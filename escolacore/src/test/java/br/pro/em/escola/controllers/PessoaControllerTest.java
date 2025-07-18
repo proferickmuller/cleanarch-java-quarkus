@@ -1,7 +1,7 @@
 package br.pro.em.escola.controllers;
 
 import br.pro.em.escola.dtos.PessoaDTO;
-import br.pro.em.escola.entities.Pessoa;
+import br.pro.em.escola.entities.PessoaEntity;
 import br.pro.em.escola.interfaces.DataSource;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,11 +11,11 @@ import static org.mockito.Mockito.*;
 
 class PessoaControllerTest {
 
-    private Pessoa pessoaCriada;
+    private PessoaEntity pessoaCriada;
 
     @BeforeEach
     void setUp() {
-        pessoaCriada = new Pessoa(
+        pessoaCriada = new PessoaEntity(
                 "123",
                 "Erick",
                 "erick@em.pro.br",

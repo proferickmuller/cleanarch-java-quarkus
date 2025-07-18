@@ -1,7 +1,7 @@
 package br.pro.em.escola.usecases;
 
 import br.pro.em.escola.dtos.PessoaDTO;
-import br.pro.em.escola.entities.Pessoa;
+import br.pro.em.escola.entities.PessoaEntity;
 import br.pro.em.escola.gateways.IPessoaGateway;
 
 public class PessoaPorIdUseCase {
@@ -12,7 +12,7 @@ public class PessoaPorIdUseCase {
         this.pessoaGateway = pessoaGateway;
     }
 
-    public Pessoa run(String id) {
+    public PessoaEntity run(String id) {
         var pessoa = this.pessoaGateway.obterPorId(id);
         if (pessoa == null) {
             return null;

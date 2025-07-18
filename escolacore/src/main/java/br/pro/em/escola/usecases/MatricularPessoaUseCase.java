@@ -1,8 +1,8 @@
 package br.pro.em.escola.usecases;
 
-import br.pro.em.escola.entities.Curso;
-import br.pro.em.escola.entities.Matricula;
-import br.pro.em.escola.entities.Pessoa;
+import br.pro.em.escola.entities.CursoEntity;
+import br.pro.em.escola.entities.MatriculaEntity;
+import br.pro.em.escola.entities.PessoaEntity;
 import br.pro.em.escola.gateways.CursoGateway;
 import br.pro.em.escola.gateways.MatriculaGateway;
 import br.pro.em.escola.gateways.PessoaGateway;
@@ -22,19 +22,19 @@ public class MatricularPessoaUseCase {
 
     public String run(String idPessoa, String idCurso) {
         // Verifica se a pessoa existe
-        Pessoa pessoa = pessoaGateway.obterPorId(idPessoa);
+        PessoaEntity pessoa = pessoaGateway.obterPorId(idPessoa);
         if (pessoa == null) {
             throw new IllegalArgumentException("Pessoa não encontrada");
         }
 
         // Verifica se o curso existe
-        Curso curso = cursoGateway.obterPorId(idCurso, true);
+        CursoEntity curso = cursoGateway.obterPorId(idCurso, true);
         if (curso == null) {
             throw new IllegalArgumentException("Curso não encontrado");
         }
 
         // Verifica se a pessoa já está matriculada no curso
-        Matricula matricula = matriculaGateway.buscar(idPessoa, idCurso);
+        MatriculaEntity matricula = matriculaGateway.buscar(idPessoa, idCurso);
         if (matricula != null) {
             throw new IllegalArgumentException("Pessoa já está matriculada neste curso");
         }

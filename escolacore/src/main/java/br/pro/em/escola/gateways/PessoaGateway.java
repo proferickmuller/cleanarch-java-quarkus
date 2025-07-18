@@ -1,6 +1,7 @@
 package br.pro.em.escola.gateways;
 
-import br.pro.em.escola.entities.Pessoa;
+import br.pro.em.escola.dtos.PessoaDTO;
+import br.pro.em.escola.entities.PessoaEntity;
 import br.pro.em.escola.interfaces.DataSource;
 
 public class PessoaGateway implements IPessoaGateway {
@@ -12,14 +13,26 @@ public class PessoaGateway implements IPessoaGateway {
     }
 
     @Override
-    public void save(Pessoa p) {
-        this.dataSource.savePessoa(p);
+    public void save(PessoaEntity p) {
+        PessoaDTO pessoaDTO = new PessoaDTO(
+                p.getId(),
+                p.getNome(),
+                p.getEnderecoEmail(),
+                p.getDataNascimento()
+        );
+
+        this.dataSource.savePessoa(pessoaDTO);
     }
 
     @Override
-    public Pessoa obterPorId(String id) {
+    public PessoaEntity obterPorId(String id) {
         var pessoaDTO = this.dataSource.pessoaPorId(id);
-        var pessoa = new Pessoa(
+        
+        if (pessoaDTO == null) {
+            return null;
+        }
+        
+        var pessoa = new PessoaEntity(
                 pessoaDTO.id(),
                 pessoaDTO.nome(),
                 pessoaDTO.enderecoEmail(),

@@ -10,7 +10,7 @@ class PessoaTest {
 
     @org.junit.jupiter.api.Test
     void newPessoaEntityWorksAsExpected() {
-        Pessoa p = new Pessoa(
+        PessoaEntity p = new PessoaEntity(
                 "123", "Erick", "erick@teste.com", LocalDate.of(2000,1,1)
         );
 
@@ -25,7 +25,7 @@ class PessoaTest {
         LocalDate dataNascimento = LocalDate.of(2020, 1, 1);
 
         Exception exception = assertThrows(ConstraintViolationException.class, () -> {
-            Pessoa p = new Pessoa(
+            PessoaEntity p = new PessoaEntity(
                     "123",
                     "Erick",
                     "erick",

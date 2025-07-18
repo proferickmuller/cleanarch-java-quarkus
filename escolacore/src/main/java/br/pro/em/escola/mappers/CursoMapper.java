@@ -1,7 +1,7 @@
 package br.pro.em.escola.mappers;
 
 import br.pro.em.escola.dtos.CursoDTO;
-import br.pro.em.escola.entities.Curso;
+import br.pro.em.escola.entities.CursoEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -11,5 +11,5 @@ import java.util.List;
 public interface CursoMapper {
     CursoMapper INSTANCE = Mappers.getMapper(CursoMapper.class);
 
-    List<CursoDTO> cursosParaCursoDTOs(List<Curso> cursos);
+    List<CursoDTO> cursosParaCursoDTOs(List<CursoEntity> cursos);
 }

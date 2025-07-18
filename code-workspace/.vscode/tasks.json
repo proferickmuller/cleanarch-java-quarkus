@@ -1,0 +1,29 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "shell",
+			"command": "quarkus dev",
+			"label": "quarkus run: webapi",
+			"options": {
+				"cwd": "../webapi"
+			},
+			"group": {
+				"kind": "test",
+				"isDefault": false
+			}
+		},
+		{
+			"type": "shell",
+			"command": "mvn clean package -DskipTests",
+			"label": "quarkus build: escolacore",
+			"options": {
+				"cwd": "../escolacore"
+			},
+			"group": {
+				"kind": "build",
+				"isDefault": false
+			}
+		},
+	]
+}

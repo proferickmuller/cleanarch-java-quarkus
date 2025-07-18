@@ -1,0 +1,23 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../escola"
+		},
+		{
+			"path": "../escolacore"
+		},
+		{
+			"path": "../webapi"
+		}
+	],
+	"settings": {
+		"java.jdt.ls.java.home": "/Users/erm/.local/share/mise/installs/java/temurin-21.0.7+6.0.LTS",
+		"java.import.gradle.java.home": "/Users/erm/.local/share/mise/installs/java/temurin-21.0.7+6.0.LTS",
+		"debug.javascript.defaultRuntimeExecutable": {
+			"pwa-node": "/Users/erm/.local/share/mise/shims/node"
+		}
+	}
+}

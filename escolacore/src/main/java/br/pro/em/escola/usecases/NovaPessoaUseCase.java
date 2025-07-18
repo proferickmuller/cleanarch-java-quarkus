@@ -1,28 +1,28 @@
 package br.pro.em.escola.usecases;
 
-import br.pro.em.escola.entities.Pessoa;
-import br.pro.em.escola.gateways.IPessoaGateway;
+import br.pro.em.escola.entities.PessoaEntity;
+import br.pro.em.escola.gateways.PessoaGateway;
 import br.pro.em.escola.util.Generator;
 
 import java.time.LocalDate;
 
 public class NovaPessoaUseCase {
 
-    private final IPessoaGateway pessoaGateway;
+    private final PessoaGateway pessoaGateway;
 
-    public NovaPessoaUseCase(IPessoaGateway pessoaGateway) {
+    public NovaPessoaUseCase(PessoaGateway pessoaGateway) {
         this.pessoaGateway = pessoaGateway;
     }
 
-    public Pessoa run(String nome, String enderecoEmail, LocalDate dataNascimento) {
+    public PessoaEntity run(String nome, String enderecoEmail, LocalDate dataNascimento) {
         String novoId;
         do {
             novoId = Generator.gerarStringAleatoria(20);
         } while (this.pessoaGateway.obterPorId(novoId) != null);
 
-        Pessoa pessoa = new Pessoa(novoId, nome, enderecoEmail, dataNascimento);
-        this.pessoaGateway.save(pessoa);
-        return pessoa;
+        PessoaEntity pessoaEntity = new PessoaEntity(novoId, nome, enderecoEmail, dataNascimento);
+        this.pessoaGateway.save(pessoaEntity);
+        return pessoaEntity;
     }
 
 }

@@ -1,6 +1,6 @@
 package br.pro.em.escola.usecases;
 
-import br.pro.em.escola.entities.Curso;
+import br.pro.em.escola.entities.CursoEntity;
 import br.pro.em.escola.gateways.ICursoGateway;
 import br.pro.em.escola.interfaces.DataSource;
 
@@ -13,7 +13,7 @@ public class ListarCursosUseCase {
         this.cursoGateway = cursoGateway;
     }
 
-    public List<Curso> run() {
+    public List<CursoEntity> run() {
         var cursos = this.cursoGateway.listarAtivos();
         if (cursos == null || cursos.isEmpty()) {
             return List.of();

@@ -9,7 +9,7 @@ class CursoTest {
 
     @Test
     void newCursoEntityWorksAsExpected() {
-        Curso curso = new Curso("123", "Curso de Testes", true);
+        CursoEntity curso = new CursoEntity("123", "Curso de Testes", true);
 
         assertEquals("123", curso.getId());
         assertEquals("Curso de Testes", curso.getNome());
@@ -21,7 +21,7 @@ class CursoTest {
 
         Exception exception = assertThrows(
                 ConstraintViolationException.class,
-                () -> new Curso("", "Curso de Testes", false)
+                () -> new CursoEntity("", "Curso de Testes", false)
         );
 
 

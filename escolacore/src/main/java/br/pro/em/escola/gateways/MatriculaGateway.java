@@ -2,9 +2,9 @@ package br.pro.em.escola.gateways;
 
 import br.pro.em.escola.dtos.MatriculaCompletoDTO;
 import br.pro.em.escola.dtos.MatriculaDTO;
-import br.pro.em.escola.entities.Curso;
-import br.pro.em.escola.entities.Matricula;
-import br.pro.em.escola.entities.Pessoa;
+import br.pro.em.escola.entities.CursoEntity;
+import br.pro.em.escola.entities.MatriculaEntity;
+import br.pro.em.escola.entities.PessoaEntity;
 import br.pro.em.escola.interfaces.DataSource;
 
 public class MatriculaGateway {
@@ -14,7 +14,7 @@ public class MatriculaGateway {
         this.dataSource = dataSource;
     }
 
-    public Matricula buscar(String pessoaId, String cursoId) {
+    public MatriculaEntity buscar(String pessoaId, String cursoId) {
         MatriculaDTO matriculaDTO = this.dataSource.obterMatricula(pessoaId, cursoId);
         if (matriculaDTO == null) {
             return null; // ou lançar uma exceção, dependendo do caso de uso
@@ -23,34 +23,34 @@ public class MatriculaGateway {
         var pData = this.dataSource.pessoaPorId(pessoaId);
         var cData = this.dataSource.cursoPorId(cursoId, true);
 
-        var pessoa = new Pessoa(
+        var pessoa = new PessoaEntity(
                 pData.id(), pData.nome(), pData.enderecoEmail(), pData.dataNascimento()
         );
-        var curso = new Curso(
+        var curso = new CursoEntity(
                 cData.id(), cData.nome(), cData.ativo()
         );
 
-        Matricula matricula = new Matricula(
+        MatriculaEntity matricula = new MatriculaEntity(
                 matriculaDTO.id(), pessoa, curso
         );
 
         return matricula;
     }
 
-    public Matricula buscar(String matriculaId) {
+    public MatriculaEntity buscar(String matriculaId) {
         MatriculaCompletoDTO matriculaCompletoDTO = this.dataSource.obterMatriculaPorId(matriculaId);
         if (matriculaCompletoDTO == null) {
             return null; // ou lançar uma exceção, dependendo do caso de uso
         }
-        var matricula = new Matricula(
+        var matricula = new MatriculaEntity(
                 matriculaCompletoDTO.matriculaId(),
-                new Pessoa(
+                new PessoaEntity(
                         matriculaCompletoDTO.pessoaId(),
                         matriculaCompletoDTO.pessoaNome(),
                         matriculaCompletoDTO.pessoaEnderecoEmail(),
                         matriculaCompletoDTO.pessoaDataNascimento()
                 ),
-                new Curso(
+                new CursoEntity(
                         matriculaCompletoDTO.cursoId(),
                         matriculaCompletoDTO.cursoNome(),
                         matriculaCompletoDTO.cursoAtivo()
@@ -59,7 +59,7 @@ public class MatriculaGateway {
         return matricula;
     }
 
-    public void matricularPessoa(String matriculaId, Pessoa pessoa, Curso curso) {
+    public void matricularPessoa(String matriculaId, PessoaEntity pessoa, CursoEntity curso) {
         MatriculaDTO m = new MatriculaDTO(matriculaId, pessoa.getId(), curso.getId());
         this.dataSource.saveMatricula(m);
     }

@@ -9,14 +9,14 @@ import jakarta.validation.constraints.Past;
 import java.time.LocalDate;
 import java.util.Set;
 
-public class Pessoa {
+public class PessoaEntity {
 
     @NotNull @NotBlank final private String id;
     @NotNull @NotBlank final private String nome;
     @NotNull @Email final private String enderecoEmail;
     @Past final private LocalDate dataNascimento;
 
-    public Pessoa(
+    public PessoaEntity(
             String id,
             String nome,
             String enderecoEmail,
@@ -29,7 +29,7 @@ public class Pessoa {
 
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         Validator validator = factory.getValidator();
-        Set<ConstraintViolation<Pessoa>> violations = validator.validate(this);
+        Set<ConstraintViolation<PessoaEntity>> violations = validator.validate(this);
 
         if  (!violations.isEmpty()) {
             throw new ConstraintViolationException(violations);
