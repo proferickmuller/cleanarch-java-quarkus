@@ -1,6 +1,6 @@
 .idea
 !escola/.idea
 target
-database
+escola/database/*.db
 
 .DS_Store
