@@ -11,7 +11,9 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
 import java.time.LocalDate;
-import java.util.List;
+
+import br.pro.em.webapi.data.Pessoa;
+import br.pro.em.webapi.data.mappers.PessoaDataMapper;
 
 @Path("/pessoa")
 public class PessoaResource {
@@ -26,14 +28,17 @@ public class PessoaResource {
     //     return all;
     // }
 
-    // @GET
-    // @Path("/{id}")
-    // @Produces(MediaType.APPLICATION_JSON)
-    // public Pessoa pessoaPorId(String id) {
-    //     var pessoa = pessoaRepository.porId(id);
-    //     System.out.println(pessoa);
-    //     return pessoa;
-    // }
+    @GET
+    @Path("/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response pessoaPorId(String id) {
+        PessoaController pessoaController = PessoaController.build(dataRepository);
+        PessoaDTO pessoaDTO = pessoaController.obterPessoaPorId(id);
+        if (pessoaDTO == null) {
+            return Response.status(Response.Status.NOT_FOUND).entity("Pessoa não encontrada").build();
+        }
+        return Response.ok().entity(pessoaDTO).build();
+    }
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)

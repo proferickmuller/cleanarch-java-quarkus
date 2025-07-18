@@ -1,5 +1,6 @@
 package br.pro.em.webapi.data;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import jakarta.enterprise.context.ApplicationScoped;
@@ -28,7 +29,7 @@ public class DataRepository implements DataSource {
         if (p == null) {
             return null;
         }
-        return PessoaDataMapper.INSTANCE.pessoaParaPessoaDTO(p);
+        return new PessoaDTO(p.getId(), p.getNome(), p.getEndEmail(), LocalDate.parse(p.getDataNascimento()));
     }
 
     @Override
