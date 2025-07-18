@@ -12,21 +12,11 @@ import jakarta.ws.rs.core.Response;
 
 import java.time.LocalDate;
 
-import br.pro.em.webapi.data.Pessoa;
-import br.pro.em.webapi.data.mappers.PessoaDataMapper;
-
 @Path("/pessoa")
 public class PessoaResource {
 
     @Inject
     DataRepository dataRepository;
-
-    // @GET
-    // @Produces(MediaType.APPLICATION_JSON)
-    // public List<Pessoa> todasPessoas() {
-    //     List<Pessoa> all = dataRepository.listAll();
-    //     return all;
-    // }
 
     @GET
     @Path("/{id}")
