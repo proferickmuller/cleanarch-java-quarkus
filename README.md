@@ -27,3 +27,9 @@ Se estiver usando o VSCode, abra o Visual Studio Code, selecione File > Open Wor
 
 - POST `/pessoa`
 - GET `/pessoa/{id}`
+
+## Notas
+
+Sempre que alterar o projeto `escolacore`, execute novamente o comando `mvn clean install`, para publicar a nova versão do pacote.
+
+Para refletir o estado na webapi, pare o devserver do Quarkus e execute o comando `mvn clean quarkus:dev` novamente.
