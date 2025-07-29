@@ -1,3 +1,4 @@
+
 # Clean Architecture com Java e Quarkus
 
 - `escolacore` - base da implementação em clean architecture
@@ -9,11 +10,19 @@ Usar o [mise](https://mise.jdx.dev/) para gerenciar as ferramentas de desenvolvi
 
 ## Instruções para rodar
 
+### Rodar automaticamente: 
+
+`make rundev`
+
+### Rodar manualmente
+
 Abrir dois terminais, e em cada um deles, entrar em cada um dos paths acima. Siga os passos abaixo na sequência.
 
 No path `escolacore`, executar o comando `mvn clean install`. **Importante: este deve rodar antes do `webapi`, porque o webapi depende dele para executar.**
 
 No path `webapi`, executar o comando `mvn clean quarkus:dev`. Ao iniciar este projeto pela primeira vez, será criado um banco de dados sqlite em `escola/database/escola.db`, já com dados de exemplo populados.
+
+
 
 ### Usando com o IDEA
 
