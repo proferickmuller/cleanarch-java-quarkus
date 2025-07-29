@@ -1,13 +1,21 @@
-# Regras de negocio a implementar
+# EscolaCore
 
-1. Adicionar "pessoa"
-2. Adicionar "estudante"
+## Camadas internas
 
-Regras
+- entities
+- usecases
 
-1. Pessoa
-   1. Endereco de email nao pode estar repetido.
-2. Estudante
-   1. Cada estudante se referencia a apenas uma pessoa. 
-   2. Nao existem estudantes com idade abaixo de 18 anos. 
-   3. 
+## Camadas de adaptação de interface
+
+- controllers
+- gateways
+- presenters
+
+## Camadas de comunicação externa
+
+- dtos
+  - objetos de comunicacao de dados (encapsulamento)
+- exceptions
+  - tratamento de erros 
+- interfaces
+  - implementação de serviços de acesso a dados que o gateway consome.
