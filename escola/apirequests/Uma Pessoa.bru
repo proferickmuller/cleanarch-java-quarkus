@@ -1,0 +1,15 @@
+meta {
+  name: Uma Pessoa
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{_host}}/api/v1/pessoa
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+}
