@@ -61,6 +61,6 @@ public class MatriculaGateway {
 
     public void matricularPessoa(String matriculaId, PessoaEntity pessoa, CursoEntity curso) {
         MatriculaDTO m = new MatriculaDTO(matriculaId, pessoa.getId(), curso.getId());
-        this.dataSource.saveMatricula(m);
+        this.dataSource.gravarMatricula(m);
     }
 }

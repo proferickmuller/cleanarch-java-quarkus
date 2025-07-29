@@ -8,20 +8,18 @@ import br.pro.em.escola.dtos.PessoaDTO;
 import java.util.List;
 
 public interface DataSource {
+    // Pessoa
+    void gravarPessoa(PessoaDTO p);
     PessoaDTO pessoaPorId(String id);
+    PessoaDTO pessoaPorEnderecoEmail(String enderecoEmail);
 
-    void savePessoa(PessoaDTO p);
-
+    // Curso
     List<CursoDTO> cursosAtivos();
-
     CursoDTO cursoPorId(String idCurso, boolean ativo);
     CursoDTO cursoPorId(String idCurso);
 
+    // Matricula
     MatriculaDTO obterMatricula(String idPessoa, String idCurso);
-
     MatriculaCompletoDTO obterMatriculaPorId(String matriculaId);  // ex: uma ReadOnly Query CQRS
-
-    void saveMatricula(MatriculaDTO m);
-
-    PessoaDTO pessoaPorEnderecoEmail(String enderecoEmail);
+    void gravarMatricula(MatriculaDTO m);
 }

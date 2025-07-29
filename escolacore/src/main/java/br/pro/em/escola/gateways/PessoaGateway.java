@@ -21,7 +21,7 @@ public class PessoaGateway implements IPessoaGateway {
                 p.getDataNascimento()
         );
 
-        this.dataSource.savePessoa(pessoaDTO);
+        this.dataSource.gravarPessoa(pessoaDTO);
     }
 
     @Override
