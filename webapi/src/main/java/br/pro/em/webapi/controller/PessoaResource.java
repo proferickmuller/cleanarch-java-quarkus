@@ -13,7 +13,7 @@ import jakarta.ws.rs.core.Response;
 
 import java.time.LocalDate;
 
-@Path("/pessoa")
+@Path("/api/v1/pessoa")
 public class PessoaResource {
 
     @Inject

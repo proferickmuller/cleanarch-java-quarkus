@@ -12,7 +12,7 @@ import jakarta.ws.rs.core.MediaType;
 
 import java.util.List;
 
-@Path("/estudante")
+@Path("/api/v1/estudante")
 public class EstudanteResource {
 
     @Inject

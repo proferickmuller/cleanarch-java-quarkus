@@ -10,7 +10,7 @@ import jakarta.ws.rs.core.MediaType;
 
 import java.util.List;
 
-@Path("/curso")
+@Path("/api/v1/curso")
 public class CursoResource {
 
     @Inject
