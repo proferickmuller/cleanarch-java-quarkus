@@ -32,6 +32,21 @@ public class PessoaGateway implements IPessoaGateway {
             return null;
         }
         
+        var pessoa = toEntity(pessoaDTO);
+        return pessoa;
+    }
+
+    @Override
+    public PessoaEntity obterPorEnderecoEmail(String enderecoEmail) {
+        var pessoaDTO = this.dataSource.pessoaPorEnderecoEmail(enderecoEmail);
+        if (pessoaDTO == null) {
+            return null;
+        }
+        var pessoa = toEntity(pessoaDTO);
+        return pessoa;
+    }
+
+    private PessoaEntity toEntity(PessoaDTO pessoaDTO) {
         var pessoa = new PessoaEntity(
                 pessoaDTO.id(),
                 pessoaDTO.nome(),

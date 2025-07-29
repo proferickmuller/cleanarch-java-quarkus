@@ -4,7 +4,6 @@ import br.pro.em.escola.dtos.CursoDTO;
 import br.pro.em.escola.dtos.MatriculaCompletoDTO;
 import br.pro.em.escola.dtos.MatriculaDTO;
 import br.pro.em.escola.dtos.PessoaDTO;
-import br.pro.em.escola.entities.PessoaEntity;
 
 import java.util.List;
 
@@ -23,4 +22,6 @@ public interface DataSource {
     MatriculaCompletoDTO obterMatriculaPorId(String matriculaId);  // ex: uma ReadOnly Query CQRS
 
     void saveMatricula(MatriculaDTO m);
+
+    PessoaDTO pessoaPorEnderecoEmail(String enderecoEmail);
 }

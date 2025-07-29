@@ -6,4 +6,5 @@ public interface IPessoaGateway {
     void save(PessoaEntity p);
 
     PessoaEntity obterPorId(String id);
+    PessoaEntity obterPorEnderecoEmail(String id);
 }

@@ -1,6 +1,7 @@
 package br.pro.em.escola.usecases;
 
 import br.pro.em.escola.entities.PessoaEntity;
+import br.pro.em.escola.exceptions.PessoaJaExistenteException;
 import br.pro.em.escola.gateways.PessoaGateway;
 import br.pro.em.escola.util.Generator;
 
@@ -19,6 +20,12 @@ public class NovaPessoaUseCase {
         do {
             novoId = Generator.gerarStringAleatoria(20);
         } while (this.pessoaGateway.obterPorId(novoId) != null);
+
+        // essa pessoa já existe?
+        PessoaEntity p = this.pessoaGateway.obterPorEnderecoEmail(enderecoEmail);
+        if (p != null) {
+            throw new PessoaJaExistenteException(enderecoEmail);
+        }
 
         PessoaEntity pessoaEntity = new PessoaEntity(novoId, nome, enderecoEmail, dataNascimento);
         this.pessoaGateway.save(pessoaEntity);

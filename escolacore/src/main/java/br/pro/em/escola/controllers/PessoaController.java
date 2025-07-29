@@ -2,6 +2,7 @@ package br.pro.em.escola.controllers;
 
 import br.pro.em.escola.dtos.PessoaDTO;
 import br.pro.em.escola.entities.PessoaEntity;
+import br.pro.em.escola.exceptions.PessoaJaExistenteException;
 import br.pro.em.escola.gateways.IPessoaGateway;
 import br.pro.em.escola.gateways.PessoaGateway;
 import br.pro.em.escola.interfaces.DataSource;
@@ -26,7 +27,15 @@ public class PessoaController {
     public PessoaDTO novaPessoa(String nome, String enderecoEmail, LocalDate dataNascimento) {
         PessoaGateway pessoaGateway = new PessoaGateway(this.dataSource);
         NovaPessoaUseCase uc = new NovaPessoaUseCase(pessoaGateway);
-        PessoaEntity pessoa = uc.run(nome, enderecoEmail, dataNascimento);
+
+        PessoaEntity pessoa;
+
+        try {
+            pessoa = uc.run(nome, enderecoEmail, dataNascimento);
+        } catch (PessoaJaExistenteException e) {
+            throw new PessoaJaExistenteException(enderecoEmail);
+        }
+
         return PessoaPresenter.toDTO(pessoa);
     }
 
