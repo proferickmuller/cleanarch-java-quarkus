@@ -12,8 +12,6 @@ import br.pro.em.escola.dtos.MatriculaDTO;
 import br.pro.em.escola.dtos.PessoaDTO;
 import br.pro.em.escola.interfaces.DataSource;
 
-import br.pro.em.webapi.data.mappers.PessoaDataMapper;
-
 @ApplicationScoped
 public class DataRepository implements DataSource {
 
@@ -29,7 +27,7 @@ public class DataRepository implements DataSource {
         if (p == null) {
             return null;
         }
-        return new PessoaDTO(p.getId(), p.getNome(), p.getEndEmail(), LocalDate.parse(p.getDataNascimento()));
+        return toDTO(p);
     }
 
     @Override
@@ -79,4 +77,24 @@ public class DataRepository implements DataSource {
         throw new UnsupportedOperationException("Unimplemented method 'saveMatricula'");
     }
 
+    @Override
+    public PessoaDTO pessoaPorEnderecoEmail(String enderecoEmail) {
+        var p = pessoaRepository.porEnderecoEmail(enderecoEmail);
+        if (p == null) {
+            return null;
+        }
+        return toDTO(p);
+    }
+
+    private PessoaDTO toDTO(Pessoa p) {
+        return new PessoaDTO(
+                p.getId(),
+                p.getNome(),
+                p.getEndEmail(),
+                LocalDate.parse(p.getDataNascimento())
+        );
+    }
+
 }
+
+

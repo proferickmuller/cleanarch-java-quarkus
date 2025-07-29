@@ -2,6 +2,7 @@ package br.pro.em.webapi.controller;
 
 import br.pro.em.escola.controllers.PessoaController;
 import br.pro.em.escola.dtos.PessoaDTO;
+import br.pro.em.escola.exceptions.PessoaJaExistenteException;
 import br.pro.em.webapi.controller.comm.NovaPessoaDTO;
 import br.pro.em.webapi.data.DataRepository;
 import jakarta.inject.Inject;
@@ -36,13 +37,20 @@ public class PessoaResource {
     public Response criarPessoa(NovaPessoaDTO novaPessoaDTO) {
         LocalDate dataNascimento = LocalDate.parse(novaPessoaDTO.dataNascimento());
 
-        PessoaController pessoaController =  PessoaController.build(dataRepository);
-        PessoaDTO pessoaDTO = pessoaController.novaPessoa(
-            novaPessoaDTO.nome(),
-            novaPessoaDTO.enderecoEmail(),
-            dataNascimento
+        PessoaDTO pessoaDTO;
+
+        try {
+            PessoaController pessoaController =  PessoaController.build(dataRepository);
+            pessoaDTO = pessoaController.novaPessoa(
+                    novaPessoaDTO.nome(),
+                    novaPessoaDTO.enderecoEmail(),
+                    dataNascimento
             );
-            
+        } catch (PessoaJaExistenteException e) {
+            var msg = "Endereco de email ja registrado: " +  e.getMessage();
+            return Response.status(Response.Status.BAD_REQUEST).entity(msg).build();
+        }
+
         if (pessoaDTO == null) {
             return Response.status(Response.Status.BAD_REQUEST).entity("Pessoa não criada").build();
         }
