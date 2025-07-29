@@ -31,7 +31,7 @@ public class DataRepository implements DataSource {
     }
 
     @Override
-    public void savePessoa(PessoaDTO pessoaDTO) {
+    public void gravarPessoa(PessoaDTO pessoaDTO) {
         Pessoa pessoa = new Pessoa();
         pessoa.setId(pessoaDTO.id());
         pessoa.setNome(pessoaDTO.nome());
@@ -72,7 +72,7 @@ public class DataRepository implements DataSource {
     }
 
     @Override
-    public void saveMatricula(MatriculaDTO m) {
+    public void gravarMatricula(MatriculaDTO m) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'saveMatricula'");
     }
