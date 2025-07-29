@@ -6,8 +6,16 @@ meta {
 
 post {
   url: {{_host}}/api/v1/pessoa
-  body: none
+  body: json
   auth: inherit
+}
+
+body:json {
+  {
+    "nome": "Erick",
+    "enderecoEmail": "erick@em.pro.br",
+    "dataNascimento": "1950-01-01"
+  }
 }
 
 settings {
